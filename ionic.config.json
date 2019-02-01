@@ -1,7 +1,5 @@
 {
-  "name": "visual",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
+  "name": "AppEdificios",
+  "integrations": {},
+  "type": "angular"
 }
