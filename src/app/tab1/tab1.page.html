@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Detalles Edificio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-card>
+    <ion-item>
+        <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg" >
+      </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-title>Areas Comúnes</ion-title>
+  <ion-item *ngFor="let Aux of Aux2">
+      <ion-label color="primary">Area 1</ion-label>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+    <ion-title>Viviendas</ion-title>
+    <ion-item >
+        <ion-label color="primary" (click)="detallesVivienda()">Vivienda 1</ion-label>
+    </ion-item>
+</ion-card>
+
+</ion-content>
+
