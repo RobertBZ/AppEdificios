@@ -1,34 +1,32 @@
 <ion-header>
-  <ion-navbar>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
     <ion-title>
       Signup
     </ion-title>
-  </ion-navbar>
+  </ion-toolbar>
 </ion-header>
-<ion-content padding id="page6">
-  <form id="signup-form2">
-    <ion-list id="signup-list3">
-      <ion-item id="signup-input3">
-        <ion-label>
-          Name
-        </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+<ion-content >
+  <ion-card>
+    <ion-item>
+        <ion-label position="floating" placeholder="nombre">Nombre</ion-label>
+        <ion-input></ion-input>
       </ion-item>
-      <ion-item id="signup-input4">
-        <ion-label>
-          Email
-        </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
+      <ion-item>
+          <ion-label position="floating"  placeholder="xxxx@gmail.com">Correo Electronico</ion-label>
+          <ion-input></ion-input>
       </ion-item>
-      <ion-item id="signup-input5">
-        <ion-label>
-          Password
-        </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
-      </ion-item>
-    </ion-list>
-    <button id="signup-button5" ion-button color="positive" block style="border-radius:30px 30px 30px 30px;">
-      Sign up
-    </button>
-  </form>
+      <ion-item>
+          <ion-label position="floating"  placeholder="***********">Contraseña</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating"  placeholder="***********">Confirmar contraseña</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+    </ion-card>
+    <ion-button expand="full" shape="round" color="primary">REGISTRARSE</ion-button>
+
 </ion-content>

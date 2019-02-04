@@ -24,6 +24,16 @@ export class AppComponent {
       title: 'Iniciar sesion',
       url: '/login',
       icon: 'contact'
+    },
+    {
+      title: 'Registrarse',
+      url: '/singup',
+      icon: 'log-in'
+    },
+    {
+      title: 'Nuevo Edificio',
+      url: '/add-edificio',
+      icon: 'add'
     }
   ];
 
