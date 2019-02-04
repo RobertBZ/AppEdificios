@@ -1,30 +1,26 @@
-<ion-header>
-    <ion-toolbar color="primary">
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-title>Login</ion-title>
-    </ion-toolbar>
-</ion-header>
-<ion-content padding id="page5">
-  <form id="login-form1">
-    <ion-item id="login-input2">
-      <ion-label>
-        Password
-      </ion-label>
-      <ion-input type="password" placeholder=""></ion-input>
-    </ion-item>
-    <ion-item id="login-input1">
-      <ion-label>
-        Email
-      </ion-label>
-      <ion-input type="email" placeholder=""></ion-input>
-    </ion-item>
-    <button id="login-button3" ion-button color="stable" block on-click="goToNotificaciones()">
-      Log in
-    </button>
-  </form>
-  <button id="login-button4" ion-button color="positive" block href-inappbrowser="/signup">
-    crear nueva cuenta
-  </button>
+<ion-content padding>
+    <div align="center">
+        <img src="assets/icon/logo.png">
+        <h1 style="color:white">Registro</h1>
+      </div>
+      
+  <div align="center">
+      <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input required type="email" placeholder="" [(ngModel)] = "correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Contraseña</ion-label>
+        <ion-input required type="password" placeholder="" [(ngModel)] = "contrasena"></ion-input>
+      </ion-item>
+      <p></p>
+      <a (click)="verificacion()">Olvidaste tu contraseña?</a>
+          <ion-button margin-top expand="block" color="dark" fill="solid">
+              Iniciar Sesion
+            </ion-button>
+          <ion-button margin-top expand="block" color="secondary" fill="solid">
+              crear nueva cuenta
+            </ion-button>
+  </div>
+    
 </ion-content>
