@@ -9,8 +9,9 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'singup', loadChildren: './singup/singup.module#SingupPageModule' },
   { path: 'add-edificio', loadChildren: './add-edificio/add-edificio.module#AddEdificioPageModule' },
-  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },  { path: 'modal-habitacion-edit', loadChildren: './modal-habitacion-edit/modal-habitacion-edit.module#ModalHabitacionEditPageModule' }
-
+  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
+  { path: 'modal-habitacion-edit', loadChildren: './modal-habitacion-edit/modal-habitacion-edit.module#ModalHabitacionEditPageModule' },
+  { path: 'modal-registro-area-vivienda', loadChildren: './modal-registro-area-vivienda/modal-registro-area-vivienda.module#ModalRegistroAreaViviendaPageModule' }
 ];
 
 @NgModule({

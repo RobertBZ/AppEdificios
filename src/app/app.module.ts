@@ -10,6 +10,7 @@ import * as firebase from "firebase";
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModalHabitacionEditPageModule } from './modal-habitacion-edit/modal-habitacion-edit.module';
+import { ModalRegistroAreaViviendaPageModule } from './modal-registro-area-vivienda/modal-registro-area-vivienda.module';
 
 var config = {
   apiKey: "AIzaSyCTc9Tuh_i6WoOLtipNd6WHVAl6uJNH8ao",
@@ -28,7 +29,8 @@ firebase.initializeApp(config);
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    ModalHabitacionEditPageModule
+    ModalHabitacionEditPageModule,
+    ModalRegistroAreaViviendaPageModule
   ],
   providers: [
     StatusBar,

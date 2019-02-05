@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ModalHabitacionEditPage } from '../modal-habitacion-edit/modal-habitacion-edit.page';
+import { ModalRegistroAreaViviendaPage } from '../modal-registro-area-vivienda/modal-registro-area-vivienda.page';
+import { AreaViviendaService } from '../services/area-vivienda/area-vivienda.service';
 
 var Edificio;
 
@@ -13,7 +15,7 @@ var Edificio;
 })
 export class Tab1Page {
   Edificio : any;
-  constructor(public modalController : ModalController, private router:Router, public alertCtrl : AlertController) { }
+  constructor(public modalController : ModalController, private router:Router, public alertCtrl : AlertController, public area : AreaViviendaService) { }
 
   
   registrarEdificio(){
@@ -54,18 +56,17 @@ export class Tab1Page {
       header: 'Añadir',
       inputs: [
         {
-          name: 'Vivienda',
+          name: 'vivienda',
           type: 'radio',
           label: 'Vivienda',
-          value: 'value1',
+          value: 'vivienda',
           checked: true
         },
         {
           name: 'Area Comun',
           type: 'radio',
           label: 'Area Comun',
-          value: 'value2',
-          checked: false
+          value: 'Area Comun'
         },
       ],
       buttons: [
@@ -78,13 +79,21 @@ export class Tab1Page {
           }
         }, {
           text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
+          handler: data => {
+            this.modalAnadir(data);
+            this.area.tipo= data;
+            console.log('data:',data);
           }
         }
       ]
     });
-
     await alert.present();
+  }
+
+  async modalAnadir(tipo : any){
+    const modal = await this.modalController.create({
+      component: ModalRegistroAreaViviendaPage
+    });
+    return await modal.present();
   }
 }
