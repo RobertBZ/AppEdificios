@@ -13,8 +13,8 @@ export class HomePage {
   detalles() {
     this.router.navigate(['tabs']);
   }
+  
   registrarEdificio(){
-    console.log("registrar edificios");
     this.router.navigate(["add-edificio"])
   }
 }

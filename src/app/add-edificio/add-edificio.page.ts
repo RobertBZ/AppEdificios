@@ -22,10 +22,10 @@ export class AddEdificioPage implements OnInit {
   ngOnInit() {
   }
 
-  agregarEdificio(){
+  async agregarEdificio(){
     console.log("Guardar Edificio -> ", this.edificio);
-   /* let userOnly = 1;
-    let cantidad = 2;
+    let userOnly = 1; //usuario id
+    let cantidad = 2; //identificacion del edificio
     firebase.database().ref('/edificio/'+userOnly+'/'+cantidad).set({
       descripcion: this.edificio.descripcion,
       direccion: this.edificio.direccion,
@@ -34,8 +34,8 @@ export class AddEdificioPage implements OnInit {
       numeroDomicilio: this.edificio.nroDomicilio,
       numeroRecepcion: this.edificio.nroRecepcion,
     })
-    console.log("datos agregados");*/
-    
+    console.log("datos agregados");
+    this.return();
   }
 
   return(){
