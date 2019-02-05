@@ -9,6 +9,7 @@ import * as firebase from "firebase";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ModalHabitacionEditPageModule } from './modal-habitacion-edit/modal-habitacion-edit.module';
 
 var config = {
   apiKey: "AIzaSyCTc9Tuh_i6WoOLtipNd6WHVAl6uJNH8ao",
@@ -26,7 +27,8 @@ firebase.initializeApp(config);
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ModalHabitacionEditPageModule
   ],
   providers: [
     StatusBar,

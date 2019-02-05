@@ -9,9 +9,12 @@ import { Router, RouterModule } from '@angular/router';
 export class HomePage {
 
   constructor(private router: Router) { }
-
-  tasb(){
+  
+  detalles() {
     this.router.navigate(['tabs']);
   }
-
+  registrarEdificio(){
+    console.log("registrar edificios");
+    this.router.navigate(["add-edificio"])
+  }
 }
