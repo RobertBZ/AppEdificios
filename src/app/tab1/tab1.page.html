@@ -3,66 +3,41 @@
     <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
     </ion-buttons>
-        <ion-title>Edificios<ion-icon float-right name="add" (click)="registrarEdificio()">&nbsp;&nbsp;</ion-icon></ion-title>
+        <ion-title>Edificios<ion-icon float-right name="add" (click)="alertAnadir()">&nbsp;&nbsp;</ion-icon></ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
     <ion-card>
-        <div align="center">
-          <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-        </div>
-        <ion-item>
-          <ion-label>Edificio 1</ion-label>
-          <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-        </ion-item>
-    
+        <ion-card-header>
+            <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
+            <ion-card-title>Edificio Bethesda</ion-card-title>
+        </ion-card-header>
         <ion-card-content>
-          Aqui viene la descripcion del edificio, no hacer caso. ignorar!!!
+            <ion-item>
+                <ion-label>Edificio 1</ion-label>
+                <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
+            </ion-item>
+            <ion-list>
+                <ion-item-sliding>
+                    <ion-item-options side="start">
+                        <button ion-button color="danger">
+                            <ion-icon name="ios-trash"></ion-icon>
+                                borrar
+                        </button>
+                    </ion-item-options>
+                    <ion-item>
+                        <ion-label>Habitacion 1</ion-label>
+                    </ion-item>
+                    <ion-item-options>
+                        <button ion-button color="success" (click)="edit()">
+                            <ion-icon name="ios-create"></ion-icon>
+                                editar
+                        </button>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
         </ion-card-content>
-      </ion-card>
-    
-      <ion-card>
-        <div align="center">
-          <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-        </div>
-        <ion-item>
-          <ion-label>Edificio 2</ion-label>
-          <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-        </ion-item>
-    
-        <ion-card-content>
-          Aqui viene la descripcion del edificio, no hacer caso. ignorar!!!
-        </ion-card-content>
-      </ion-card>
-    
-      <ion-card>
-        <div align="center">
-          <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-        </div>
-        <ion-item>
-          <ion-label>Edificio 3</ion-label>
-          <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-        </ion-item>
-    
-        <ion-card-content>
-          Aqui viene la descripcion del edificio, no hacer caso. ignorar!!!
-        </ion-card-content>
-      </ion-card>
-    
-      <ion-card>
-        <div align="center">
-          <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-        </div>
-        <ion-item>
-          <ion-label>Edificio 4</ion-label>
-          <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-        </ion-item>
-    
-        <ion-card-content>
-          Aqui viene la descripcion del edificio, no hacer caso. ignorar!!!
-        </ion-card-content>
-      </ion-card>
-
+    </ion-card>
 </ion-content>
 
