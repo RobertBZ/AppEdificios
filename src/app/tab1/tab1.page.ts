@@ -55,14 +55,14 @@ export class Tab1Page {
       inputs: [
         {
           name: 'Vivienda',
-          type: 'checkbox',
+          type: 'radio',
           label: 'Vivienda',
           value: 'value1',
           checked: true
         },
         {
           name: 'Area Comun',
-          type: 'checkbox',
+          type: 'radio',
           label: 'Area Comun',
           value: 'value2',
           checked: false
