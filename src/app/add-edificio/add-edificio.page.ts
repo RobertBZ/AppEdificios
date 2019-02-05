@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Edificio } from '../models/edificio';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,10 +9,22 @@ import { Router } from '@angular/router';
 })
 export class AddEdificioPage implements OnInit {
 
-  constructor(private router: Router) { }
+  // variables de uso Externo e Interno
+  edificio: Edificio;
+
+  constructor(private router: Router) { 
+    //Inicializacion
+    this.edificio = new Edificio;
+
+  }
 
   ngOnInit() {
   }
+
+  agregarEdificio(){
+    console.log("Guardar Edificio -> ", this.edificio);
+  }
+
   return(){
     this.router.navigate(['home']);
   }
