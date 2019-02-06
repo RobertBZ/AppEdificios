@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ModalHabitacionEditPage } from '../modal-habitacion-edit/modal-habitacion-edit.page';
 import { ModalRegistroAreaViviendaPage } from '../modal-registro-area-vivienda/modal-registro-area-vivienda.page';
 import { AreaViviendaService } from '../services/area-vivienda/area-vivienda.service';
-
-var Edificio;
-
+import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-tab1',
@@ -14,9 +14,33 @@ var Edificio;
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  Edificio : any;
-  constructor(public modalController : ModalController, private router:Router, public alertCtrl : AlertController, public area : AreaViviendaService) { }
 
+  Edificio : any [] = [];
+  items:any[]=[];
+
+  constructor(public modalController : ModalController, private router:Router, public alertCtrl : AlertController, public area : AreaViviendaService,
+              private db : AngularFireDatabase) { 
+    this.sacer().subscribe(data=>{
+      console.log(data);
+      this.items = data;
+      console.log("El item: ",this.items);
+    });
+    //this.sacer2();
+  }
+
+  sacer(){
+    return this.db.list('AreaComun')
+    .snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    }))
+  }
+  /*sacer2(){
+    firebase.database().ref('AreaComun/key').once('value').then((snapshot) => {
+      this.Edificio.push(snapshot.val());
+      console.log("Lectura de Datos Realizada: ", this.Edificio);
+    });
+  }*/
   
   registrarEdificio(){
     console.log("registrar edificios");

@@ -19,7 +19,7 @@
                 <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
             </ion-item>
             <ion-list>
-                <ion-item-sliding>
+                <ion-item-sliding *ngFor="let item of items.key">
                     <ion-item-options side="start">
                         <button ion-button color="danger">
                             <ion-icon name="ios-trash"></ion-icon>
@@ -27,7 +27,8 @@
                         </button>
                     </ion-item-options>
                     <ion-item>
-                        <ion-label>Habitacion 1</ion-label>
+                        <ion-label>{{item.key}}</ion-label>
+                        <ion-label>{{item.precio}}</ion-label>
                     </ion-item>
                     <ion-item-options>
                         <button ion-button color="success" (click)="edit()">
