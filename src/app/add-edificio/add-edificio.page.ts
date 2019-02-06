@@ -27,9 +27,6 @@ export class AddEdificioPage implements OnInit {
     //Inicializacion
     this.edificio = new Edificio;
 
-
-    //Pruebas de consultas
-    this.listarEdificios();
   }
 
   ngOnInit() {
@@ -47,18 +44,8 @@ export class AddEdificioPage implements OnInit {
       numeroRecepcion: this.edificio.nroRecepcion,
     });
 
-
-    /*  firebase.database().ref('/edificio/'+userOnly+'/').push({
-        descripcion: this.edificio.descripcion,
-        direccion: this.edificio.direccion,
-        expensas: this.edificio.expensas,
-        nombre: this.edificio.nombre,
-        numeroDomicilio: this.edificio.nroDomicilio,
-        numeroRecepcion: this.edificio.nroRecepcion,
-      })*/
-
     console.log("datos agregados");
-    // this.return();
+    this.return();
   }
 
   sacar() {

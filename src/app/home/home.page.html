@@ -1,25 +1,45 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home<ion-icon float-right name="add" (click)="registrarEdificio()">&nbsp;&nbsp;</ion-icon>
-    </ion-title>
-  </ion-toolbar>
+        <ion-toolbar color="primary">
+                <ion-buttons slot="start">
+                        <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title>
+                        Home<ion-icon float-right name="add" (click)="registrarEdificio()">&nbsp;&nbsp;</ion-icon>
+                </ion-title>
+        </ion-toolbar>
 </ion-header>
 
 <ion-content>
         <ion-card *ngFor="let edificio of listaEdificio">
                 <ion-card-header>
                         <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-                        <ion-card-title>{{edificio.nombre}}</ion-card-title>
+                        <ion-card-title>
+                                <h2>Edificio: "<b>{{edificio.nombre}}</b>"</h2>
+                        </ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
-                        <ion-item>
-                                <ion-label>{{edificio.descripcion}}</ion-label>
-                                <ion-button fill="outline" slot="end" (click)="detalles(edificio.key)">View</ion-button>
-                        </ion-item>
+                        <ion-grid>
+                                <ion-row>
+                                        <ion-col size="6">
+                                                Direccion:
+                                        </ion-col>
+                                        <ion-col size="6">
+                                                {{edificio.direccion}}
+                                        </ion-col>
+                                </ion-row>
+                                <ion-row>
+                                        <ion-col size="6">
+                                                Expensas:
+                                        </ion-col>
+                                        <ion-col size="6">
+                                                Bs. {{edificio.expensas}}
+                                        </ion-col>
+                                </ion-row>
+                                <ion-item>
+                                        <ion-button fill="outline" slot="start" (click)="detalles(edificio.key)">Ver</ion-button>
+                                        <ion-button fill="outline" slot="end" color="danger" (click)="eliminarEdificio(edificio.key)">Borrar</ion-button>
+                                </ion-item>
+                        </ion-grid>
                 </ion-card-content>
         </ion-card>
 </ion-content>
