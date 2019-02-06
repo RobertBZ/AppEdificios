@@ -36,11 +36,8 @@ firebase.initializeApp(config);
     AppRoutingModule,
     ModalHabitacionEditPageModule,
     ModalRegistroAreaViviendaPageModule,
-<<<<<<< HEAD
-=======
     AngularFireAuthModule,
     AngularFireDatabaseModule
->>>>>>> f3074ebfee38217c85e539df01afdc9136cf0702
   ],
   providers: [
     StatusBar,

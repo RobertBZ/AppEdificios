@@ -38,4 +38,8 @@
         <ion-input [(ngModel)]="edificio.nroRecepcion" name="recepcion" ></ion-input>
       </ion-item>
     </ion-card>
+
+    <ion-card *ngFor="let item of items">
+      <label>{{item.key}}</label>
+    </ion-card>
   </ion-content>

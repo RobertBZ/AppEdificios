@@ -2,9 +2,10 @@ import { Component, OnInit, ɵCompiler_compileModuleAndAllComponentsAsync__POST_
 import { Edificio } from '../models/edificio';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import { AngularFireDatabase} from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import { Platform } from '@ionic/angular';
+import { Identifiers } from '@angular/compiler';
 
 
 @Component({
@@ -16,7 +17,9 @@ export class AddEdificioPage implements OnInit {
 
   // variables de uso Externo e Interno
   edificio: Edificio;
-  userref:any;
+  userref: any;
+  items: any;
+
 
   constructor(
     private router: Router,
@@ -58,27 +61,20 @@ export class AddEdificioPage implements OnInit {
     // this.return();
   }
 
-  sacar(){
-    return this.db.list('Edificios')
-    .snapshotChanges()
-    .pipe(map(changes => {
-      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
-    }));
+  sacar() {
+    return this.db.list('Edificio')
+      .snapshotChanges()
+      .pipe(map(changes => {
+        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+      }));
   }
 
   async listarEdificios() {
-    let content: any;
-    let keys: any;
-    this.userref= this.db.list('Edificios');
-    this.sacar().subscribe(data=>{
-    console.log("Datos Obtenidos:  ", data);
-    //this.items=data;
-  });
-  /*await firebase.database().ref('/Edificio/').once('value').then((data) => {
-      keys = data;
-      content = data.val();
-    });*/
-
+    this.userref = this.db.list('Edificio');
+    this.sacar().subscribe(data => {
+      this.items = data;
+      console.log("Datos Obtenidos:  ", this.items);
+    });
   }
 
   async buscarEdificio() {
