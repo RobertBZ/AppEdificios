@@ -30,7 +30,7 @@ firebase.initializeApp(config);
     IonicModule.forRoot(),
     AppRoutingModule,
     ModalHabitacionEditPageModule,
-    ModalRegistroAreaViviendaPageModule
+    ModalRegistroAreaViviendaPageModule,
   ],
   providers: [
     StatusBar,
