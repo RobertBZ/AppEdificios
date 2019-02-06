@@ -9,6 +9,7 @@ import * as firebase from "firebase";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ModalHabitacionEditPageModule } from './modal-habitacion-edit/modal-habitacion-edit.module';
 import { ModalRegistroAreaViviendaPageModule } from './modal-registro-area-vivienda/modal-registro-area-vivienda.module';
 
@@ -30,7 +31,8 @@ firebase.initializeApp(config);
     IonicModule.forRoot(),
     AppRoutingModule,
     ModalHabitacionEditPageModule,
-    ModalRegistroAreaViviendaPageModule
+    ModalRegistroAreaViviendaPageModule,
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,

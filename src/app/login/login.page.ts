@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Events, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import * as firebase from "firebase";
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -7,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(public authen : AngularFireAuth, public afAuth: AngularFireAuth,private router: Router,public loadingController: LoadingController,
+    public events: Events) { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
+  
 }

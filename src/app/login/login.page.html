@@ -5,17 +5,18 @@
       </div>
       
   <div align="center">
+      <p style="color:tomato">{{texto}}</p>
       <ion-item>
           <ion-label>Email</ion-label>
-          <ion-input required type="email" placeholder="" [(ngModel)] = "correo"></ion-input>
+          <ion-input required type="email" [(ngModel)] = "correo"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Contraseña</ion-label>
-        <ion-input required type="password" placeholder="" [(ngModel)] = "contrasena"></ion-input>
+        <ion-input required type="password" [(ngModel)] = "contrasena"></ion-input>
       </ion-item>
       <p></p>
       <a (click)="verificacion()">Olvidaste tu contraseña?</a>
-          <ion-button margin-top expand="block" color="dark" fill="solid">
+          <ion-button margin-top expand="block" color="dark" fill="solid" (click)="login()">
               Iniciar Sesion
             </ion-button>
           <ion-button margin-top expand="block" color="secondary" fill="solid">
