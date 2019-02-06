@@ -2,9 +2,9 @@ import { Component, OnInit, ɵCompiler_compileModuleAndAllComponentsAsync__POST_
 import { Edificio } from '../models/edificio';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import { CanDeactivate } from '@angular/router/src/utils/preactivation';
-import { createNodeAtIndex } from '@angular/core/src/render3/instructions';
-import { Key } from 'protractor';
+import { AngularFireDatabase} from '@angular/fire/database';
+import { map } from 'rxjs/operators';
+import { Platform } from '@ionic/angular';
 
 
 @Component({
@@ -16,8 +16,11 @@ export class AddEdificioPage implements OnInit {
 
   // variables de uso Externo e Interno
   edificio: Edificio;
+  userref:any;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private db: AngularFireDatabase) {
     //Inicializacion
     this.edificio = new Edificio;
 
@@ -29,17 +32,10 @@ export class AddEdificioPage implements OnInit {
   ngOnInit() {
   }
 
-  generadorID(){
-    let cadena: string;
-    cadena = this.edificio.nombre + "00" + this.edificio.expensas; 
-    return cadena;
-  }
-
   async agregarEdificio() {
-    this.edificio._id = this.generadorID();
 
     console.log("Guardar A Edificio -> ", this.edificio);
-    firebase.database().ref('/Edificio/' + this.edificio._id + '/').set({
+    firebase.database().ref('/Edificio/').push({
       descripcion: this.edificio.descripcion,
       direccion: this.edificio.direccion,
       expensas: this.edificio.expensas,
@@ -62,17 +58,27 @@ export class AddEdificioPage implements OnInit {
     // this.return();
   }
 
+  sacar(){
+    return this.db.list('Edificios')
+    .snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    }));
+  }
+
   async listarEdificios() {
     let content: any;
     let keys: any;
-    this.edificio._id = this.generadorID();
-    
-  await firebase.database().ref('/Edificio/').once('value').then((data) => {
-      keys = data.
+    this.userref= this.db.list('Edificios');
+    this.sacar().subscribe(data=>{
+    console.log("Datos Obtenidos:  ", data);
+    //this.items=data;
+  });
+  /*await firebase.database().ref('/Edificio/').once('value').then((data) => {
+      keys = data;
       content = data.val();
-    });
+    });*/
 
-    console.log("id: ", keys + " Contenido: ", content);
   }
 
   async buscarEdificio() {

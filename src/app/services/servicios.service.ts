@@ -34,19 +34,6 @@ export class ServiciosService {
                 .catch((error: any) => {
                     reject(error);
                 });
-<<<<<<< HEAD
-=======
-                if (arr.length > 0) {
-                    resolve(arr);
-
-                } else {
-                    resolve(null);
-                }
-            })
-            .catch((error: any) => {
-                reject(error);
-            });
->>>>>>> 6a1a1f976830e423130243f4522c6ffd6d439394
         });
     }
 
