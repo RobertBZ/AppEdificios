@@ -9,54 +9,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-card>
-        <ion-card-header>
-            <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-            <ion-card-title>Edificio Bethesda</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-                <ion-item>
-                        <ion-label>Edificio 1</ion-label>
-                        <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-                      </ion-item>
-              </ion-card-content>
-    </ion-card>
-    <ion-card>
-            <ion-card-header>
-                <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-                <ion-card-title>Edificio Bethesda</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-                    <ion-item>
-                            <ion-label>Edificio 1</ion-label>
-                            <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-                          </ion-item>
-                  </ion-card-content>
-        </ion-card>
-        <ion-card>
+<ion-content *ngIf="listActiva == true">
+        <label *ngFor="let edificio of listaEdificio;">gg:    {{listaEdificio.nombre}}</label>
+        <ion-card *ngFor="let edificio of listaEdificio; let i=index">
                 <ion-card-header>
-                    <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-                    <ion-card-title>Edificio Bethesda</ion-card-title>
+                        <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
+                        <ion-card-title>{{edificio.nombre}}</ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
                         <ion-item>
-                                <ion-label>Edificio 1</ion-label>
+                                <ion-label>{{edificio.descripcion}}</ion-label>
                                 <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-                              </ion-item>
-                      </ion-card-content>
-            </ion-card>
-            <ion-card>
-                    <ion-card-header>
-                        <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
-                        <ion-card-title>Edificio Bethesda</ion-card-title>
-                    </ion-card-header>
-                    <ion-card-content>
-                            <ion-item>
-                                    <ion-label>Edificio 1</ion-label>
-                                    <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
-                                  </ion-item>
-                          </ion-card-content>
-                </ion-card>
-
+                        </ion-item>
+                </ion-card-content>
+        </ion-card>
 </ion-content>
