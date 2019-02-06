@@ -12,6 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { ModalHabitacionEditPageModule } from './modal-habitacion-edit/modal-habitacion-edit.module';
 import { ModalRegistroAreaViviendaPageModule } from './modal-registro-area-vivienda/modal-registro-area-vivienda.module';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 var config = {
   apiKey: "AIzaSyCTc9Tuh_i6WoOLtipNd6WHVAl6uJNH8ao",
   authDomain: "proyecto-control-edificio.firebaseapp.com",
@@ -27,10 +31,16 @@ firebase.initializeApp(config);
   entryComponents: [],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(config),
     IonicModule.forRoot(),
     AppRoutingModule,
     ModalHabitacionEditPageModule,
     ModalRegistroAreaViviendaPageModule,
+<<<<<<< HEAD
+=======
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
+>>>>>>> f3074ebfee38217c85e539df01afdc9136cf0702
   ],
   providers: [
     StatusBar,
