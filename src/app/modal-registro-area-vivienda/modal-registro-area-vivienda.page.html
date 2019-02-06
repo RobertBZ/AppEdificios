@@ -1,9 +1,65 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>modal-registro-Area-Vivienda</ion-title>
+  <ion-toolbar color="primary">
+      <ion-title *ngIf="area.tipo=='Area Comun'">
+          <ion-icon name="arrow-round-back" (click)="return()"></ion-icon>
+          <ion-title float-right color="light">Areas en común</ion-title>
+        </ion-title>
+        <ion-title *ngIf="area.tipo=='vivienda'">
+            <ion-icon name="arrow-round-back" (click)="return()"></ion-icon>
+            <ion-title float-right color="light">Vivienda</ion-title>
+          </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="area.tipo=='Area Comun'">
+    <ion-card>
+      <ion-card color="danger">
+        <ion-title>Datos-Areas en común</ion-title>
+      </ion-card>
 
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="areaComun.NombreArea" name="nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input [(ngModel)]="areaComun.precio" name="precio"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+      <ion-button expand="full" color="success" shape="round">Guardar</ion-button>
+    </ion-card>
+  </div>
+  <div *ngIf="area.tipo=='vivienda'">
+    <ion-card>
+      <ion-card color="danger">
+        <ion-title>Datos-Vivienda</ion-title>
+      </ion-card>
+      <ion-item>
+        <ion-label position="floating">Familia</ion-label>
+        <ion-input name="familia"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">N° de Puerta</ion-label>
+        <ion-input name="nropuerta"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">¿Quién paga expensas?</ion-label>
+        <ion-input name="expensaspaga"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">N° de Niños</ion-label>
+        <ion-input name="nroninos"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">N° de Mascotas</ion-label>
+        <ion-input name="nromascotas"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+      <ion-button expand="full" color="success" shape="round">Guardar</ion-button>
+    </ion-card>
+  </div>
 </ion-content>
