@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Edificio } from '../models/edificio';
 import { ServiciosService } from '../services/servicios.service';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +11,17 @@ import { ServiciosService } from '../services/servicios.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   i: number = 0;
   listaEdificio: any;
-  listActiva: boolean;
+  userref: any;
 
-  constructor(private router: Router, private service: ServiciosService) {
-    this.cargarEdificio();
-    this.listActiva = false;
-    this.listaEdificio = null;
+  constructor(
+    private router: Router, 
+    private service: ServiciosService,
+    private db: AngularFireDatabase) {
+      //Inicializacion
+    this.listarEdificios();
   }
 
   detalles() {
@@ -27,23 +32,19 @@ export class HomePage {
     this.router.navigate(["add-edificio"]);
   }
 
-  async cargarEdificio() {
-    await this.service.getEdidicios();
-    
-    this.listaEdificio = await this.service.getEdidicios(); 
-    
-    //console.log("HTML:   ", this.listaEdificio);
+  sacar() {
+    return this.db.list('Edificio')
+      .snapshotChanges()
+      .pipe(map(changes => {
+        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+      }));
+  }
 
-
-    /*console.log("La lista de datos es: ", this.listaEdificio);
-    console.log(typeof(this.listaEdificio))
-    
-    
-
-    console.log("lista actual:   ", this.listaEdificio[0].nombre);*/
-    
-    //this.listActiva = true;
-
-    //console.log("LIsta de edificios:  ", this.listaEdificio);
+  async listarEdificios() {
+    this.userref = this.db.list('Edificio');
+    this.sacar().subscribe(data => {
+      this.listaEdificio = data;
+      console.log("Datos Obtenidos:  ", this.listaEdificio);
+    });
   }
 }

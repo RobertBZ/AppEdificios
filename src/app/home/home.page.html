@@ -9,9 +9,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="listActiva == true">
-        <label *ngFor="let edificio of listaEdificio;">gg:    {{listaEdificio.nombre}}</label>
-        <ion-card *ngFor="let edificio of listaEdificio; let i=index">
+<ion-content>
+        <ion-card *ngFor="let edificio of listaEdificio">
                 <ion-card-header>
                         <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
                         <ion-card-title>{{edificio.nombre}}</ion-card-title>
