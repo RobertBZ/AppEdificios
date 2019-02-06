@@ -9,9 +9,12 @@ import * as firebase from "firebase";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ModalHabitacionEditPageModule } from './modal-habitacion-edit/modal-habitacion-edit.module';
 import { ModalRegistroAreaViviendaPageModule } from './modal-registro-area-vivienda/modal-registro-area-vivienda.module';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 var config = {
   apiKey: "AIzaSyCTc9Tuh_i6WoOLtipNd6WHVAl6uJNH8ao",
@@ -28,11 +31,13 @@ firebase.initializeApp(config);
   entryComponents: [],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(config),
     IonicModule.forRoot(),
     AppRoutingModule,
     ModalHabitacionEditPageModule,
     ModalRegistroAreaViviendaPageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     StatusBar,
