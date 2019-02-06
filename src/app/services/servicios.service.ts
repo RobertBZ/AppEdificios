@@ -20,7 +20,7 @@ export class ServiciosService {
                 });
                 if (arr.length > 0) {
                     resolve(arr);
-                    
+
                 } else {
                     resolve(null);
                 }
