@@ -7,6 +7,7 @@ import { AreaViviendaService } from '../services/area-vivienda/area-vivienda.ser
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase';
+import { EdificioService } from '../services/edificio/edificio.service';
 
 @Component({
   selector: 'app-tab1',
@@ -18,14 +19,21 @@ export class Tab1Page {
   Edificio : any [] = [];
   items:any[]=[];
 
-  constructor(public modalController : ModalController, private router:Router, public alertCtrl : AlertController, public area : AreaViviendaService,
-              private db : AngularFireDatabase) { 
+  constructor(
+    public modalController : ModalController, 
+    private router:Router, 
+    public alertCtrl : AlertController, 
+    public area : AreaViviendaService,
+    private db : AngularFireDatabase,
+    private edificio: EdificioService) { 
+      //Inicializacion
     this.sacer().subscribe(data=>{
       console.log(data);
       this.items = data;
       console.log("El item: ",this.items);
     });
     //this.sacer2();
+    console.log(this.edificio.edificioOnly);
   }
 
   sacer(){

@@ -4,6 +4,7 @@ import { Edificio } from '../models/edificio';
 import { ServiciosService } from '../services/servicios.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
+import { EdificioService } from '../services/edificio/edificio.service';
 
 @Component({
   selector: 'app-home',
@@ -19,12 +20,14 @@ export class HomePage {
   constructor(
     private router: Router, 
     private service: ServiciosService,
-    private db: AngularFireDatabase) {
+    private db: AngularFireDatabase,
+    private eddificio: EdificioService) {
       //Inicializacion
     this.listarEdificios();
   }
 
-  detalles() {
+  detalles(edificioId: any) {
+    this.eddificio.edificioOnly = edificioId;
     this.router.navigate(['tabs']);
   }
 
