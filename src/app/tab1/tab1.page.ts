@@ -16,8 +16,11 @@ import { EdificioService } from '../services/edificio/edificio.service';
 })
 export class Tab1Page {
 
+  bandera : Boolean = true;
+  bandera2 : Boolean;
   Edificio : any [] = [];
-  items:any[]=[];
+  areas :any [] = [];
+  viviendas : any [] = [];
 
   constructor(
     public modalController : ModalController, 
@@ -29,26 +32,40 @@ export class Tab1Page {
       //Inicializacion
     this.sacer().subscribe(data=>{
       console.log(data);
-      this.items = data;
-      console.log("El item: ",this.items);
+      this.areas = data;
+      console.log("El item: ",this.areas);
     });
-    //this.sacer2();
-    console.log(this.edificio.edificioOnly);
+    this.sacerViviendas().subscribe(data=>{
+      console.log(data);
+      this.viviendas = data;
+      console.log("El item: ",this.viviendas);
+    });
   }
 
+  datos(cond : number){
+    if(cond == 1){
+      this.bandera = true;
+      this.bandera2 = false;
+    }else{
+      this.bandera2 = true;
+      this.bandera = false;
+    }
+  }
   sacer(){
-    return this.db.list('AreaComun')
+    return this.db.list('AreaComun/'+ this.edificio.edificioOnly)
     .snapshotChanges()
     .pipe(map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     }))
   }
-  /*sacer2(){
-    firebase.database().ref('AreaComun/key').once('value').then((snapshot) => {
-      this.Edificio.push(snapshot.val());
-      console.log("Lectura de Datos Realizada: ", this.Edificio);
-    });
-  }*/
+
+  sacerViviendas(){
+    return this.db.list('Vivienda/'+ this.edificio.edificioOnly)
+    .snapshotChanges()
+    .pipe(map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    }))
+  }
   
   registrarEdificio(){
     console.log("registrar edificios");

@@ -8,6 +8,10 @@
 </ion-header>
 
 <ion-content padding>
+
+        
+
+
     <ion-card>
         <ion-card-header>
             <img src="https://www.antoniodomingo.com/wp-content/uploads/2009/02/edificio.jpg">
@@ -18,8 +22,17 @@
                 <ion-label>Edificio 1</ion-label>
                 <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
             </ion-item>
-            <ion-list>
-                <ion-item-sliding *ngFor="let item of items.key">
+            <ion-segment>
+                    <ion-segment-button (ionSelect)="datos(1)">
+                      <ion-label>Areas Comunes</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button (ionSelect)="datos(2)">
+                      <ion-label>viviendas</ion-label>
+                    </ion-segment-button>
+            </ion-segment>
+
+            <ion-list *ngIf="bandera == true">
+                <ion-item-sliding *ngFor="let vivienda of viviendas">
                     <ion-item-options side="start">
                         <button ion-button color="danger">
                             <ion-icon name="ios-trash"></ion-icon>
@@ -27,8 +40,11 @@
                         </button>
                     </ion-item-options>
                     <ion-item>
-                        <ion-label>{{item.key}}</ion-label>
-                        <ion-label>{{item.precio}}</ion-label>
+                        <ion-label>{{vivienda.familia}}</ion-label>
+                        <ion-label>{{vivienda.expensas}}</ion-label>
+                        <ion-label>{{vivienda.nroMascotas}}</ion-label>
+                        <ion-label>{{vivienda.nroNiños}}</ion-label>
+                        <ion-label>{{vivienda.nroPuerta}}</ion-label>
                     </ion-item>
                     <ion-item-options>
                         <button ion-button color="success" (click)="edit()">
@@ -38,6 +54,27 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
+
+            <ion-list *ngIf="bandera == true">
+                    <ion-item-sliding *ngFor="let area of areas">
+                        <ion-item-options side="start">
+                            <button ion-button color="danger">
+                                <ion-icon name="ios-trash"></ion-icon>
+                                    borrar
+                            </button>
+                        </ion-item-options>
+                        <ion-item>
+                            <ion-label>{{area.nombre}}</ion-label>
+                            <ion-label>{{area.precio}}</ion-label>
+                        </ion-item>
+                        <ion-item-options>
+                            <button ion-button color="success" (click)="edit()">
+                                <ion-icon name="ios-create"></ion-icon>
+                                    editar
+                            </button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+                </ion-list>
         </ion-card-content>
     </ion-card>
 </ion-content>

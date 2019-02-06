@@ -6,6 +6,7 @@ import { Vivienda } from '../models/vivienda';
 import { ModalController } from '@ionic/angular';
 import { AngularFireDatabase } from '@angular/fire/database';
 import * as firebase from 'firebase';
+import { EdificioService } from '../services/edificio/edificio.service';
 
 @Component({
   selector: 'app-modal-registro-area-vivienda',
@@ -19,7 +20,14 @@ export class ModalRegistroAreaViviendaPage implements OnInit {
   vivienda : Vivienda;
   cantArea : number = 0;
 
-  constructor(public area : AreaViviendaService,private router: Router,public modal:ModalController, private db : AngularFireDatabase) {
+  constructor(
+    public area : AreaViviendaService,
+    private router: Router,
+    public modal:ModalController, 
+    private db : AngularFireDatabase,
+    private edificio : EdificioService
+    ) {
+      //INICIO DE PROGRAMA
     console.log(area.tipo)
     this.userDb = this.db.list('/AreaComun/key/');
     this.areaComun = new AreaComun;
@@ -34,11 +42,18 @@ export class ModalRegistroAreaViviendaPage implements OnInit {
   }
 
   anadirArea(){
-    //this.cantArea++;
-    var area = 'area';
-    firebase.database().ref('/AreaComun/key/'+area).set({
+    firebase.database().ref('/AreaComun/'+this.edificio.edificioOnly+'/').push({
       nombre : this.areaComun.NombreArea,
       precio : this.areaComun.precio,
+    });
+  }
+  anadirVivienda(){
+    firebase.database().ref('/Vivienda/'+this.edificio.edificioOnly+'/').push({
+      familia : this.vivienda.Familia,
+      expensas : this.vivienda.ExpensasPaga,
+      nroMascotas : this.vivienda.nroMascotas,
+      nroNinos : this.vivienda.nroNinos,
+      nroPuerta : this.vivienda.nroPuerta
     });
   }
 }
