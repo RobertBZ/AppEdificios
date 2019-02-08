@@ -22,16 +22,16 @@
                 <ion-label>Edificio 1</ion-label>
                 <ion-button fill="outline" slot="end" (click)="detalles()">View</ion-button>
             </ion-item>
-            <ion-segment>
+            <!--<ion-segment>
                     <ion-segment-button (ionSelect)="datos(1)">
                       <ion-label>Areas Comunes</ion-label>
                     </ion-segment-button>
                     <ion-segment-button (ionSelect)="datos(2)">
                       <ion-label>viviendas</ion-label>
                     </ion-segment-button>
-            </ion-segment>
+            </ion-segment>-->
 
-            <ion-list *ngIf="bandera == true">
+            <!--<ion-list>
                 <ion-item-sliding *ngFor="let vivienda of viviendas">
                     <ion-item-options side="start">
                         <button ion-button color="danger">
@@ -53,10 +53,10 @@
                         </button>
                     </ion-item-options>
                 </ion-item-sliding>
-            </ion-list>
+            </ion-list>-->
 
-            <ion-list *ngIf="bandera == true">
-                    <ion-item-sliding *ngFor="let area of areas">
+            <ion-list>
+                    <ion-item-sliding *ngFor="let ar of areas">
                         <ion-item-options side="start">
                             <button ion-button color="danger">
                                 <ion-icon name="ios-trash"></ion-icon>

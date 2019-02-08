@@ -25,7 +25,7 @@ export class HomePage {
   detalles(edificioId: any) {
     this.eddificio.edificioOnly = edificioId;
     console.log("Ide modificar: ", edificioId);
-    //this.router.navigate(['tabs']);
+    this.router.navigate(['tabs']);
   }
 
   registrarEdificio() {

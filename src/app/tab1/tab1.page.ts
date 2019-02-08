@@ -31,9 +31,8 @@ export class Tab1Page {
     private edificio: EdificioService) { 
       //Inicializacion
     this.sacer().subscribe(data=>{
-      console.log(data);
       this.areas = data;
-      console.log("El item: ",this.areas);
+      console.log("El item areas: ",this.areas);
     });
     this.sacerViviendas().subscribe(data=>{
       console.log(data);
@@ -51,6 +50,7 @@ export class Tab1Page {
       this.bandera = false;
     }
   }
+
   sacer(){
     return this.db.list('AreaComun/'+ this.edificio.edificioOnly)
     .snapshotChanges()
